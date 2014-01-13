@@ -54,11 +54,13 @@ static const Layout layouts[] = {
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "urxvtc", NULL };
+static const char *muttcmd[]  = { "urxvtc", "-e", "mutt", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_q,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_m,      spawn,          {.v = muttcmd } },
 	{ MODKEY,                       XK_comma,  focusstack,     {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_Tab,    zoom,           {0} },
