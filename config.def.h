@@ -14,7 +14,7 @@ static const Bool showbar           = False;    /* False means no bar */
 static const Bool topbar            = True;     /* False means bottom bar */
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "dev", "web", "com", "hfx"};
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -80,15 +80,10 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
+	TAGKEYS(                        XK_o,                      0)
+	TAGKEYS(                        XK_p,                      1)
+	TAGKEYS(                        XK_bracketleft,            2)
+	TAGKEYS(                        XK_bracketright,           3)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 
