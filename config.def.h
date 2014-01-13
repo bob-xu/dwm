@@ -34,10 +34,10 @@ static const Bool resizehints = False; /* True means respect size hints in tiled
 #include "bstack.c"
 static const Layout layouts[] = {
 	/* symbol     arrange function */
+	{ "TTT",      bstack },
 	{ "[]=",      tile },    /* first entry is default */
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
-	{ "TTT",      bstack },
 };
 
 /* key definitions */
