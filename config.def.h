@@ -34,11 +34,14 @@ static const Layout layouts[] = {
 };
 
 #define MODKEY Mod4Mask
-#define TAGKEYS(KEY,TAG) \
-	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+#define TK(KEY,TAG) \
+	{ MODKEY,                         KEY,  view,        {.ui = 1 << TAG} }, \
+	{ MODKEY|ShiftMask,               KEY,  toggleview,  {.ui = 1 << TAG} }, \
+	{ MODKEY|ControlMask,             KEY,  tag,         {.ui = 1 << TAG} }, \
+	{ MODKEY|ControlMask|ShiftMask,   KEY,  toggletag,   {.ui = 1 << TAG} },
+#define RK(MASK,KEY,ACTION) \
+	{ MASK,                           KEY,  ACTION,      {.i  = +1 } }, \
+	{ MASK|ShiftMask,                 KEY,  ACTION,      {.i  = -1 } },
 
 static const char *dmenu[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 
@@ -64,6 +67,14 @@ static const char *screenshot_focussed[] = { "scrot", "%Y-%m-%dT%H:%M:%S.png", "
 
 
 static Key keys[] = {
+  TK(                      XK_o,                    0            )
+  TK(                      XK_p,                    1            )
+  TK(                      XK_bracketleft,          2            )
+  TK(                      XK_bracketright,         3            )
+  TK(                      XK_k,                    4            )
+  RK( MODKEY,              XK_comma,                focusstack   )
+  RK( MODKEY,              XK_period,               focusmon     )
+  RK( MODKEY|ControlMask,  XK_period,               tagmon       )
 	{ MODKEY,                       XK_q,         spawn,          {.v = dmenu } },
 	{ MODKEY,                       XK_Return,    spawn,          {.v = terminal } },
 	{ MODKEY,                       XK_m,         spawn,          {.v = mutt } },
@@ -79,20 +90,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Print,     spawn,          {.v = screenshot_focussed } },
 	{ False,                        XK_Print,     spawn,          {.v = screenshot } },
 	{ MODKEY,                       XK_Delete,    spawn,          {.v = lock } },
-	{ MODKEY,                       XK_comma,     focusstack,     {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,     focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_Tab,       zoom,           {0} },
 	{ MODKEY,                       XK_BackSpace, killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_space,     togglefloating, {0} },
-	{ MODKEY|ShiftMask,             XK_period,    focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period,    focusmon,       {.i = +1 } },
-	{ MODKEY|ControlMask|ShiftMask, XK_period,    tagmon,         {.i = -1 } },
-	{ MODKEY|ControlMask,           XK_period,    tagmon,         {.i = +1 } },
-	TAGKEYS(                        XK_o,                      0)
-	TAGKEYS(                        XK_p,                      1)
-	TAGKEYS(                        XK_bracketleft,            2)
-	TAGKEYS(                        XK_bracketright,           3)
-	TAGKEYS(                        XK_k,                      4)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 
