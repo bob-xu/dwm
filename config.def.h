@@ -48,20 +48,20 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "urxvtc", NULL };
-static const char *muttcmd[]  = { "urxvtc", "-e", "mutt", NULL };
-static const char *browsercmd[]  = { "chromium", NULL };
+static const char *dmenu[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *terminal[]  = { "urxvtc", NULL };
+static const char *mutt[]  = { "urxvtc", "-e", "mutt", NULL };
+static const char *browser[]  = { "chromium", NULL };
 
 static const char *lock[] = { "slock", NULL };
 
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_q,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_m,      spawn,          {.v = muttcmd } },
-	{ MODKEY,                       XK_backslash,  spawn,      {.v = browsercmd } },
+	{ MODKEY,                       XK_q,      spawn,          {.v = dmenu } },
+	{ MODKEY,                       XK_Return, spawn,          {.v = terminal } },
+	{ MODKEY,                       XK_m,      spawn,          {.v = mutt } },
+	{ MODKEY,                       XK_backslash,  spawn,      {.v = browser } },
 	{ MODKEY,                       XK_Delete, spawn,          {.v = lock } },
 	{ MODKEY,                       XK_comma,  focusstack,     {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  focusstack,     {.i = -1 } },
@@ -87,7 +87,7 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
-	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+	{ ClkStatusText,        0,              Button2,        spawn,          {.v = terminal } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
