@@ -53,6 +53,8 @@ static const char *termcmd[]  = { "urxvtc", NULL };
 static const char *muttcmd[]  = { "urxvtc", "-e", "mutt", NULL };
 static const char *browsercmd[]  = { "chromium", NULL };
 
+static const char *lock[] = { "slock", NULL };
+
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -60,6 +62,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_m,      spawn,          {.v = muttcmd } },
 	{ MODKEY,                       XK_backslash,  spawn,      {.v = browsercmd } },
+	{ MODKEY,                       XK_Delete, spawn,          {.v = lock } },
 	{ MODKEY,                       XK_comma,  focusstack,     {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_Tab,    zoom,           {0} },
