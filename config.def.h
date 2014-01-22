@@ -56,6 +56,9 @@ static const char *browser_private[]  = { "chromium", "--incognito", NULL };
 
 static const char *lock[] = { "slock", NULL };
 
+static const char *mpdmenu_library[]  = { "mpdmenu", "-l", "::", "-i", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *mpdmenu_playlist[] = { "mpdmenu", "-p", "::", "-i", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -64,6 +67,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_m,      spawn,          {.v = mutt } },
 	{ MODKEY,                       XK_backslash,  spawn,      {.v = browser } },
 	{ MODKEY|ControlMask,           XK_backslash,  spawn,      {.v = browser_private } },
+	{ MODKEY,                       XK_slash,      spawn,      {.v = mpdmenu_library } },
+	{ MODKEY|ControlMask,           XK_slash,      spawn,      {.v = mpdmenu_playlist } },
 	{ MODKEY,                       XK_Delete, spawn,          {.v = lock } },
 	{ MODKEY,                       XK_comma,  focusstack,     {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  focusstack,     {.i = -1 } },
