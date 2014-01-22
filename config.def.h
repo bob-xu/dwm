@@ -67,33 +67,33 @@ static const char *screenshot_focussed[] = { "scrot", "%Y-%m-%dT%H:%M:%S.png", "
 
 
 static Key keys[] = {
-  TK(                      XK_o,                    0            )
-  TK(                      XK_p,                    1            )
-  TK(                      XK_bracketleft,          2            )
-  TK(                      XK_bracketright,         3            )
-  TK(                      XK_k,                    4            )
-  RK( MODKEY,              XK_comma,                focusstack   )
-  RK( MODKEY,              XK_period,               focusmon     )
-  RK( MODKEY|ControlMask,  XK_period,               tagmon       )
-	{ MODKEY,                       XK_q,         spawn,          {.v = dmenu } },
-	{ MODKEY,                       XK_Return,    spawn,          {.v = terminal } },
-	{ MODKEY,                       XK_m,         spawn,          {.v = mutt } },
-	{ MODKEY,                       XK_backslash, spawn,          {.v = browser } },
-	{ MODKEY|ControlMask,           XK_backslash, spawn,          {.v = browser_private } },
-	{ MODKEY,                       XK_slash,     spawn,          {.v = mpdmenu_library } },
-	{ MODKEY|ControlMask,           XK_slash,     spawn,          {.v = mpdmenu_playlist } },
-	{ MODKEY,                       XK_Prior,     spawn,          {.v = volume_up } },
-	{ MODKEY,                       XK_Next,      spawn,          {.v = volume_down } },
-	{ MODKEY,                       XK_Down,      spawn,          {.v = toggle_state } },
-	{ MODKEY,                       XK_Right,     spawn,          {.v = track_next } },
-	{ MODKEY,                       XK_Left,      spawn,          {.v = track_prev } },
-	{ MODKEY,                       XK_Print,     spawn,          {.v = screenshot_focussed } },
-	{ False,                        XK_Print,     spawn,          {.v = screenshot } },
-	{ MODKEY,                       XK_Delete,    spawn,          {.v = lock } },
-	{ MODKEY,                       XK_Tab,       zoom,           {0} },
-	{ MODKEY,                       XK_BackSpace, killclient,     {0} },
-	{ MODKEY|ShiftMask,             XK_space,     togglefloating, {0} },
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+  TK(                     XK_o,            0          )
+  TK(                     XK_p,            1          )
+  TK(                     XK_bracketleft,  2          )
+  TK(                     XK_bracketright, 3          )
+  TK(                     XK_k,            4          )
+  RK( MODKEY,             XK_comma,        focusstack )
+  RK( MODKEY,             XK_period,       focusmon   )
+  RK( MODKEY|ControlMask, XK_period,       tagmon     )
+    { MODKEY,             XK_q,            spawn,          {.v = dmenu } },
+    { MODKEY,             XK_Return,       spawn,          {.v = terminal } },
+    { MODKEY,             XK_m,            spawn,          {.v = mutt } },
+    { MODKEY,             XK_backslash,    spawn,          {.v = browser } },
+    { MODKEY|ControlMask, XK_backslash,    spawn,          {.v = browser_private } },
+    { MODKEY,             XK_slash,        spawn,          {.v = mpdmenu_library } },
+    { MODKEY|ControlMask, XK_slash,        spawn,          {.v = mpdmenu_playlist } },
+    { MODKEY,             XK_Prior,        spawn,          {.v = volume_up } },
+    { MODKEY,             XK_Next,         spawn,          {.v = volume_down } },
+    { MODKEY,             XK_Down,         spawn,          {.v = toggle_state } },
+    { MODKEY,             XK_Right,        spawn,          {.v = track_next } },
+    { MODKEY,             XK_Left,         spawn,          {.v = track_prev } },
+    { MODKEY,             XK_Print,        spawn,          {.v = screenshot_focussed } },
+    { False,              XK_Print,        spawn,          {.v = screenshot } },
+    { MODKEY,             XK_Delete,       spawn,          {.v = lock } },
+    { MODKEY,             XK_Tab,          zoom,           {0} },
+    { MODKEY,             XK_BackSpace,    killclient,     {0} },
+    { MODKEY|ShiftMask,   XK_space,        togglefloating, {0} },
+    { MODKEY|ShiftMask,   XK_q,            quit,           {0} },
 };
 
 static Button buttons[] = {
