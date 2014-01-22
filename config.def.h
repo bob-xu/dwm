@@ -1,6 +1,3 @@
-/* See LICENSE file for copyright and license details. */
-
-/* appearance */
 static const char font[]            = "-*-terminus-medium-r-*-*-12-*-*-*-*-*-*-*";
 static const char normbordercolor[] = "#5f676a";
 static const char normbgcolor[]     = "#222222";
@@ -8,12 +5,11 @@ static const char normfgcolor[]     = "#888888";
 static const char selbordercolor[]  = "#2e9ef4";
 static const char selbgcolor[]      = "#285577";
 static const char selfgcolor[]      = "#eeeeee";
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int snap      = 32;       /* snap pixel */
-static const Bool showbar           = False;    /* False means no bar */
-static const Bool topbar            = True;     /* False means bottom bar */
+static const unsigned int borderpx  = 1;
+static const unsigned int snap      = 32;
+static const Bool showbar           = False;
+static const Bool topbar            = True;
 
-/* tagging */
 static const char *tags[] = { "dev", "web", "com", "hfx", "crp" };
 
 static const Rule rules[] = {
@@ -26,20 +22,17 @@ static const Rule rules[] = {
 	{ "Firefox",  NULL,       NULL,       1 << 8,       False,       -1 },
 };
 
-/* layout(s) */
-static const float mfact      = 0.55; /* factor of master area size [0.05..0.95] */
-static const int nmaster      = 1;    /* number of clients in master area */
-static const Bool resizehints = False; /* True means respect size hints in tiled resizals */
+static const float mfact      = 0.55;
+static const int nmaster      = 1;
+static const Bool resizehints = False;
 
 static const Layout layouts[] = {
-	/* symbol     arrange function */
 	{ "TTT",      bstack },
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
+	{ "[]=",      tile },
+	{ "><>",      NULL },
 	{ "[M]",      monocle },
 };
 
-/* key definitions */
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
@@ -47,11 +40,12 @@ static const Layout layouts[] = {
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
-/* commands */
 static const char *dmenu[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *terminal[]  = { "urxvtc", NULL };
-static const char *mutt[]  = { "urxvtc", "-e", "mutt", NULL };
-static const char *browser[]  = { "chromium", NULL };
+
+static const char *terminal[] = { "urxvtc", NULL };
+static const char *mutt[]     = { "urxvtc", "-e", "mutt", NULL };
+
+static const char *browser[]          = { "chromium", NULL };
 static const char *browser_private[]  = { "chromium", "--incognito", NULL };
 
 static const char *lock[] = { "slock", NULL };
@@ -70,31 +64,30 @@ static const char *screenshot_focussed[] = { "scrot", "%Y-%m-%dT%H:%M:%S.png", "
 
 
 static Key keys[] = {
-	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_q,      spawn,          {.v = dmenu } },
-	{ MODKEY,                       XK_Return, spawn,          {.v = terminal } },
-	{ MODKEY,                       XK_m,      spawn,          {.v = mutt } },
-	{ MODKEY,                       XK_backslash,  spawn,      {.v = browser } },
-	{ MODKEY|ControlMask,           XK_backslash,  spawn,      {.v = browser_private } },
-	{ MODKEY,                       XK_slash,      spawn,      {.v = mpdmenu_library } },
-	{ MODKEY|ControlMask,           XK_slash,      spawn,      {.v = mpdmenu_playlist } },
-	{ MODKEY,                       XK_Prior,      spawn,       {.v = volume_up } },
-	{ MODKEY,                       XK_Next,       spawn,       {.v = volume_down } },
-	{ MODKEY,                       XK_Down,       spawn,       {.v = toggle_state } },
-	{ MODKEY,                       XK_Right,      spawn,       {.v = track_next } },
-	{ MODKEY,                       XK_Left,       spawn,       {.v = track_prev } },
-	{ MODKEY,              XK_Print,                spawn,       {.v = screenshot_focussed } },
-	{ False,               XK_Print,                spawn,       {.v = screenshot } },
-	{ MODKEY,                       XK_Delete, spawn,          {.v = lock } },
-	{ MODKEY,                       XK_comma,  focusstack,     {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_comma,  focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_Tab,    zoom,           {0} },
-	{ MODKEY,                       XK_BackSpace,      killclient,     {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY|ShiftMask,             XK_period, focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY|ControlMask|ShiftMask, XK_period, tagmon,         {.i = -1 } },
-	{ MODKEY|ControlMask,           XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_q,         spawn,          {.v = dmenu } },
+	{ MODKEY,                       XK_Return,    spawn,          {.v = terminal } },
+	{ MODKEY,                       XK_m,         spawn,          {.v = mutt } },
+	{ MODKEY,                       XK_backslash, spawn,          {.v = browser } },
+	{ MODKEY|ControlMask,           XK_backslash, spawn,          {.v = browser_private } },
+	{ MODKEY,                       XK_slash,     spawn,          {.v = mpdmenu_library } },
+	{ MODKEY|ControlMask,           XK_slash,     spawn,          {.v = mpdmenu_playlist } },
+	{ MODKEY,                       XK_Prior,     spawn,          {.v = volume_up } },
+	{ MODKEY,                       XK_Next,      spawn,          {.v = volume_down } },
+	{ MODKEY,                       XK_Down,      spawn,          {.v = toggle_state } },
+	{ MODKEY,                       XK_Right,     spawn,          {.v = track_next } },
+	{ MODKEY,                       XK_Left,      spawn,          {.v = track_prev } },
+	{ MODKEY,                       XK_Print,     spawn,          {.v = screenshot_focussed } },
+	{ False,                        XK_Print,     spawn,          {.v = screenshot } },
+	{ MODKEY,                       XK_Delete,    spawn,          {.v = lock } },
+	{ MODKEY,                       XK_comma,     focusstack,     {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_comma,     focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_Tab,       zoom,           {0} },
+	{ MODKEY,                       XK_BackSpace, killclient,     {0} },
+	{ MODKEY|ShiftMask,             XK_space,     togglefloating, {0} },
+	{ MODKEY|ShiftMask,             XK_period,    focusmon,       {.i = -1 } },
+	{ MODKEY,                       XK_period,    focusmon,       {.i = +1 } },
+	{ MODKEY|ControlMask|ShiftMask, XK_period,    tagmon,         {.i = -1 } },
+	{ MODKEY|ControlMask,           XK_period,    tagmon,         {.i = +1 } },
 	TAGKEYS(                        XK_o,                      0)
 	TAGKEYS(                        XK_p,                      1)
 	TAGKEYS(                        XK_bracketleft,            2)
@@ -103,10 +96,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 };
 
-/* button definitions */
-/* click can be ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static Button buttons[] = {
-	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
