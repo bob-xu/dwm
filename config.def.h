@@ -65,6 +65,10 @@ static const char *track_prev[]   = { "mpc", "prev", NULL };
 static const char *volume_down[]  = { "amixer", "-q", "sset", "Master", "5%-", NULL };
 static const char *volume_up[]    = { "amixer", "-q", "sset", "Master", "5%+", NULL };
 
+static const char *screenshot[]          = { "scrot", "%Y-%m-%dT%H:%M:%S.png", "-z", "-e", "mv $f ~/Screenshots", NULL };
+static const char *screenshot_focussed[] = { "scrot", "%Y-%m-%dT%H:%M:%S.png", "-z", "-u", "-e", "mv $f ~/Screenshots", NULL };
+
+
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_q,      spawn,          {.v = dmenu } },
@@ -79,6 +83,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Down,       spawn,       {.v = toggle_state } },
 	{ MODKEY,                       XK_Right,      spawn,       {.v = track_next } },
 	{ MODKEY,                       XK_Left,       spawn,       {.v = track_prev } },
+	{ MODKEY,              XK_Print,                spawn,       {.v = screenshot_focussed } },
+	{ False,               XK_Print,                spawn,       {.v = screenshot } },
 	{ MODKEY,                       XK_Delete, spawn,          {.v = lock } },
 	{ MODKEY,                       XK_comma,  focusstack,     {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  focusstack,     {.i = -1 } },
