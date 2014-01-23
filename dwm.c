@@ -2029,6 +2029,11 @@ warp(const Client *c) {
 		return;
 	}
 
+	Atom wtype = getatomprop((Client *)c, netatom[NetWMWindowType]);
+
+	if (wtype == netatom[NetWMWindowTypeDialog])
+		return;
+
 	XQueryPointer(dpy, root, &dummy, &dummy, &x, &y, &di, &di, &dui);
 
 	if((x > c->x && y > c->y && x < c->x + c->w && y < c->y + c->h) ||
