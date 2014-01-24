@@ -24,6 +24,7 @@ static const Rule rules[] = {
 	{ NULL,       NULL,       "Terminal", 1,            False,         False,       -1 },
 	{ NULL,       NULL,       "Hotfix",   1 << 3,       False,         False,       -1 },
 	{ NULL,       NULL,       "Chromium", 1 << 1,       False,         False,       -1 },
+	{ NULL,       NULL,       "LDAP",     1 << 4,       False,         False,       -1 },
 };
 
 static const float mfact      = 0.55;
