@@ -20,7 +20,10 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     iscentered     isfloating   monitor */
 	{ "Gimp",     NULL,       NULL,       0,            False,         True,        -1 },
 	{ NULL,       NULL,       "Scratch",  0,            True,          True,        -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       False,         False,       -1 },
+	{ NULL,       NULL,       "Mutt",     1 << 2,       False,         False,       -1 },
+	{ NULL,       NULL,       "Terminal", 1,            False,         False,       -1 },
+	{ NULL,       NULL,       "Hotfix",   1 << 3,       False,         False,       -1 },
+	{ NULL,       NULL,       "Chromium", 1 << 1,       False,         False,       -1 },
 };
 
 static const float mfact      = 0.55;
@@ -46,9 +49,10 @@ static const Layout layouts[] = {
 
 static const char *dmenu[]            = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 
-static const char *terminal[]         = { "urxvtc", NULL };
+static const char *terminal[]         = { "urxvtc", "-title", "Terminal", NULL };
+static const char *hotfix[]           = { "urxvtc", "-title", "Hotfix", NULL };
 static const char *scratch[]          = { "urxvtc", "-title", "Scratch", "-geometry", "160x40", NULL };
-static const char *mutt[]             = { "urxvtc", "-e", "mutt", NULL };
+static const char *mutt[]             = { "urxvtc", "-title", "Mutt", "-e", "mutt", NULL };
 
 static const char *browser[]          = { "chromium", NULL };
 static const char *browser_private[]  = { "chromium", "--incognito", NULL };
@@ -79,6 +83,7 @@ static Key keys[] = {
   RK( MODKEY|ControlMask, XK_period,       tagmon     )
     { MODKEY,             XK_q,            spawn,          {.v = dmenu } },
     { MODKEY,             XK_Return,       spawn,          {.v = terminal } },
+    { MODKEY|ControlMask, XK_Return,       spawn,          {.v = hotfix } },
     { MODKEY|ShiftMask,   XK_Return,       spawn,          {.v = scratch } },
     { MODKEY,             XK_m,            spawn,          {.v = mutt } },
     { MODKEY,             XK_backslash,    spawn,          {.v = browser } },
