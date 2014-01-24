@@ -44,28 +44,28 @@ static const Layout layouts[] = {
 	{ MASK,                           KEY,  ACTION,      {.i  = +1 } }, \
 	{ MASK|ShiftMask,                 KEY,  ACTION,      {.i  = -1 } },
 
-static const char *dmenu[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *dmenu[]            = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 
-static const char *terminal[] = { "urxvtc", NULL };
-static const char *scratch[] = { "urxvtc", "-title", "Scratch", "-geometry", "160x40", NULL };
-static const char *mutt[]     = { "urxvtc", "-e", "mutt", NULL };
+static const char *terminal[]         = { "urxvtc", NULL };
+static const char *scratch[]          = { "urxvtc", "-title", "Scratch", "-geometry", "160x40", NULL };
+static const char *mutt[]             = { "urxvtc", "-e", "mutt", NULL };
 
 static const char *browser[]          = { "chromium", NULL };
 static const char *browser_private[]  = { "chromium", "--incognito", NULL };
 
-static const char *lock[] = { "slock", NULL };
+static const char *lock[]             = { "slock", NULL };
 
 static const char *mpdmenu_library[]  = { "mpdmenu", "-l", "::", "-i", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *mpdmenu_playlist[] = { "mpdmenu", "-p", "::", "-i", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 
-static const char *toggle_state[] = { "mpc", "toggle", NULL };
-static const char *track_next[]   = { "mpc", "next", NULL };
-static const char *track_prev[]   = { "mpc", "prev", NULL };
-static const char *volume_down[]  = { "amixer", "-q", "sset", "Master", "5%-", NULL };
-static const char *volume_up[]    = { "amixer", "-q", "sset", "Master", "5%+", NULL };
+static const char *toggle_state[]     = { "mpc", "toggle", NULL };
+static const char *track_next[]       = { "mpc", "next", NULL };
+static const char *track_prev[]       = { "mpc", "prev", NULL };
+static const char *volume_down[]      = { "amixer", "-q", "sset", "Master", "5%-", NULL };
+static const char *volume_up[]        = { "amixer", "-q", "sset", "Master", "5%+", NULL };
 
-static const char *screenshot[]          = { "scrot", "%Y-%m-%dT%H:%M:%S.png", "-z", "-e", "mv $f ~/Screenshots", NULL };
-static const char *screenshot_focussed[] = { "scrot", "%Y-%m-%dT%H:%M:%S.png", "-z", "-u", "-e", "mv $f ~/Screenshots", NULL };
+static const char *scrot[]            = { "scrot", "%Y-%m-%dT%H:%M:%S.png", "-z", "-e", "mv $f ~/Screenshots", NULL };
+static const char *scrot_focussed[]   = { "scrot", "%Y-%m-%dT%H:%M:%S.png", "-z", "-u", "-e", "mv $f ~/Screenshots", NULL };
 
 
 static Key keys[] = {
@@ -90,8 +90,8 @@ static Key keys[] = {
     { MODKEY,             XK_Down,         spawn,          {.v = toggle_state } },
     { MODKEY,             XK_Right,        spawn,          {.v = track_next } },
     { MODKEY,             XK_Left,         spawn,          {.v = track_prev } },
-    { MODKEY,             XK_Print,        spawn,          {.v = screenshot_focussed } },
-    { False,              XK_Print,        spawn,          {.v = screenshot } },
+    { MODKEY,             XK_Print,        spawn,          {.v = scrot_focussed } },
+    { False,              XK_Print,        spawn,          {.v = scrot } },
     { MODKEY,             XK_Delete,       spawn,          {.v = lock } },
     { MODKEY,             XK_Tab,          zoom,           {0} },
     { MODKEY,             XK_BackSpace,    killclient,     {0} },
