@@ -58,6 +58,8 @@ static const char *hotfix[]           = { "urxvtc", "-title", "Hotfix", NULL };
 static const char *scratch[]          = { "urxvtc", "-title", "Scratch", "-geometry", "160x40", NULL };
 static const char *mutt[]             = { "urxvtc", "-title", "Mutt", "-e", "mutt", NULL };
 
+static const char *clipmenu[]         = { "clipmenu", "-i", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+
 static const char *browser[]          = { "chromium", NULL };
 static const char *browser_private[]  = { "chromium", "--incognito", NULL };
 
@@ -92,6 +94,7 @@ static Key keys[] = {
     { MODKEY,             XK_m,            spawn,          {.v = mutt } },
     { MODKEY,             XK_backslash,    spawn,          {.v = browser } },
     { MODKEY|ControlMask, XK_backslash,    spawn,          {.v = browser_private } },
+    { MODKEY,             XK_c,            spawn,          {.v = clipmenu } },
     { MODKEY,             XK_slash,        spawn,          {.v = mpdmenu_library } },
     { MODKEY|ControlMask, XK_slash,        spawn,          {.v = mpdmenu_playlist } },
     { MODKEY,             XK_Prior,        spawn,          {.v = volume_up } },
