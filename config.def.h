@@ -65,8 +65,8 @@ static const char *browser_private[]  = { "chromium", "--incognito", NULL };
 
 static const char *lock[]             = { "slock", NULL };
 
-static const char *mpdmenu_library[]  = { "mpdmenu", "-l", "::", "-i", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *mpdmenu_playlist[] = { "mpdmenu", "-p", "::", "-i", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *mpdmenu_library[]  = { "mpdmenu", "-l", "::", "-i", "-l", "3", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *mpdmenu_playlist[] = { "mpdmenu", "-p", "::", "-i", "-l", "3", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 
 static const char *toggle_state[]     = { "mpc", "toggle", NULL };
 static const char *track_next[]       = { "mpc", "next", NULL };
@@ -94,7 +94,6 @@ static Key keys[] = {
     { MODKEY,             XK_m,            spawn,          {.v = mutt } },
     { MODKEY,             XK_backslash,    spawn,          {.v = browser } },
     { MODKEY|ControlMask, XK_backslash,    spawn,          {.v = browser_private } },
-    { MODKEY,             XK_c,            spawn,          {.v = clipmenu } },
     { MODKEY,             XK_slash,        spawn,          {.v = mpdmenu_library } },
     { MODKEY|ControlMask, XK_slash,        spawn,          {.v = mpdmenu_playlist } },
     { MODKEY,             XK_Prior,        spawn,          {.v = volume_up } },
