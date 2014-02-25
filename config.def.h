@@ -51,7 +51,8 @@ static const Layout layouts[] = {
 	{ EVENT, MASK,                           KEY,  ACTION,      {.i  = +1 } }, \
 	{ EVENT, MASK|ShiftMask,                 KEY,  ACTION,      {.i  = -1 } },
 
-static const char *dmenu[]            = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *dmenucmd[]         = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static char        dmenumon[2]        = "0";
 
 static const char *terminal[]         = { "urxvtc", "-title", "Terminal", NULL };
 static const char *hotfix[]           = { "urxvtc", "-title", "Hotfix", NULL };
@@ -77,7 +78,6 @@ static const char *volume_up[]        = { "amixer", "-q", "sset", "Master", "5%+
 static const char *scrot[]            = { "scrot", "%Y-%m-%dT%H:%M:%S.png", "-z", "-e", "mv $f ~/Screenshots", NULL };
 static const char *scrot_focussed[]   = { "scrot", "%Y-%m-%dT%H:%M:%S.png", "-z", "-u", "-e", "mv $f ~/Screenshots", NULL };
 
-
 static Key keys[] = {
   TK( KeyPress,                       XK_o,            0               )
   TK( KeyPress,                       XK_p,            1               )
@@ -87,7 +87,7 @@ static Key keys[] = {
   RK( KeyPress,   MODKEY,             XK_comma,        focusstack      )
   RK( KeyPress,   MODKEY,             XK_period,       focusmon        )
   RK( KeyPress,   MODKEY|ControlMask, XK_period,       tagmon          )
-    { KeyPress,   MODKEY,             XK_q,            spawn,          {.v = dmenu } },
+    { KeyPress,   MODKEY,             XK_q,            spawn,          {.v = dmenucmd } },
     { KeyPress,   MODKEY,             XK_Return,       spawn,          {.v = terminal } },
     { KeyPress,   MODKEY|ControlMask, XK_Return,       spawn,          {.v = hotfix } },
     { KeyPress,   MODKEY|ShiftMask,   XK_Return,       spawn,          {.v = scratch } },
