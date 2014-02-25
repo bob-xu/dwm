@@ -42,14 +42,14 @@ static const Layout layouts[] = {
 };
 
 #define MODKEY Mod4Mask
-#define TK(KEY,TAG) \
-	{ MODKEY,                         KEY,  view,        {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,               KEY,  toggleview,  {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask,             KEY,  tag,         {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask,   KEY,  toggletag,   {.ui = 1 << TAG} },
-#define RK(MASK,KEY,ACTION) \
-	{ MASK,                           KEY,  ACTION,      {.i  = +1 } }, \
-	{ MASK|ShiftMask,                 KEY,  ACTION,      {.i  = -1 } },
+#define TK(EVENT,KEY,TAG) \
+	{ EVENT, MODKEY,                         KEY,  view,        {.ui = 1 << TAG} }, \
+	{ EVENT, MODKEY|ShiftMask,               KEY,  toggleview,  {.ui = 1 << TAG} }, \
+	{ EVENT, MODKEY|ControlMask,             KEY,  tag,         {.ui = 1 << TAG} }, \
+	{ EVENT, MODKEY|ControlMask|ShiftMask,   KEY,  toggletag,   {.ui = 1 << TAG} },
+#define RK(EVENT,MASK,KEY,ACTION) \
+	{ EVENT, MASK,                           KEY,  ACTION,      {.i  = +1 } }, \
+	{ EVENT, MASK|ShiftMask,                 KEY,  ACTION,      {.i  = -1 } },
 
 static const char *dmenu[]            = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 
@@ -79,35 +79,35 @@ static const char *scrot_focussed[]   = { "scrot", "%Y-%m-%dT%H:%M:%S.png", "-z"
 
 
 static Key keys[] = {
-  TK(                     XK_o,            0          )
-  TK(                     XK_p,            1          )
-  TK(                     XK_bracketleft,  2          )
-  TK(                     XK_bracketright, 3          )
-  TK(                     XK_k,            4          )
-  RK( MODKEY,             XK_comma,        focusstack )
-  RK( MODKEY,             XK_period,       focusmon   )
-  RK( MODKEY|ControlMask, XK_period,       tagmon     )
-    { MODKEY,             XK_q,            spawn,          {.v = dmenu } },
-    { MODKEY,             XK_Return,       spawn,          {.v = terminal } },
-    { MODKEY|ControlMask, XK_Return,       spawn,          {.v = hotfix } },
-    { MODKEY|ShiftMask,   XK_Return,       spawn,          {.v = scratch } },
-    { MODKEY,             XK_m,            spawn,          {.v = mutt } },
-    { MODKEY,             XK_backslash,    spawn,          {.v = browser } },
-    { MODKEY|ControlMask, XK_backslash,    spawn,          {.v = browser_private } },
-    { MODKEY,             XK_slash,        spawn,          {.v = mpdmenu_library } },
-    { MODKEY|ControlMask, XK_slash,        spawn,          {.v = mpdmenu_playlist } },
-    { MODKEY,             XK_Prior,        spawn,          {.v = volume_up } },
-    { MODKEY,             XK_Next,         spawn,          {.v = volume_down } },
-    { MODKEY,             XK_Down,         spawn,          {.v = toggle_state } },
-    { MODKEY,             XK_Right,        spawn,          {.v = track_next } },
-    { MODKEY,             XK_Left,         spawn,          {.v = track_prev } },
-    { MODKEY,             XK_Print,        spawn,          {.v = scrot_focussed } },
-    { False,              XK_Print,        spawn,          {.v = scrot } },
-    { MODKEY,             XK_Delete,       spawn,          {.v = lock } },
-    { MODKEY,             XK_Tab,          zoom,           {0} },
-    { MODKEY,             XK_BackSpace,    killclient,     {0} },
-    { MODKEY|ShiftMask,   XK_space,        togglefloating, {0} },
-    { MODKEY|ShiftMask,   XK_q,            quit,           {0} },
+  TK( KeyPress,                       XK_o,            0               )
+  TK( KeyPress,                       XK_p,            1               )
+  TK( KeyPress,                       XK_bracketleft,  2               )
+  TK( KeyPress,                       XK_bracketright, 3               )
+  TK( KeyPress,                       XK_k,            4               )
+  RK( KeyPress,   MODKEY,             XK_comma,        focusstack      )
+  RK( KeyPress,   MODKEY,             XK_period,       focusmon        )
+  RK( KeyPress,   MODKEY|ControlMask, XK_period,       tagmon          )
+    { KeyPress,   MODKEY,             XK_q,            spawn,          {.v = dmenu } },
+    { KeyPress,   MODKEY,             XK_Return,       spawn,          {.v = terminal } },
+    { KeyPress,   MODKEY|ControlMask, XK_Return,       spawn,          {.v = hotfix } },
+    { KeyPress,   MODKEY|ShiftMask,   XK_Return,       spawn,          {.v = scratch } },
+    { KeyPress,   MODKEY,             XK_m,            spawn,          {.v = mutt } },
+    { KeyPress,   MODKEY,             XK_backslash,    spawn,          {.v = browser } },
+    { KeyPress,   MODKEY|ControlMask, XK_backslash,    spawn,          {.v = browser_private } },
+    { KeyPress,   MODKEY,             XK_slash,        spawn,          {.v = mpdmenu_library } },
+    { KeyPress,   MODKEY|ControlMask, XK_slash,        spawn,          {.v = mpdmenu_playlist } },
+    { KeyPress,   MODKEY,             XK_Prior,        spawn,          {.v = volume_up } },
+    { KeyPress,   MODKEY,             XK_Next,         spawn,          {.v = volume_down } },
+    { KeyPress,   MODKEY,             XK_Down,         spawn,          {.v = toggle_state } },
+    { KeyPress,   MODKEY,             XK_Right,        spawn,          {.v = track_next } },
+    { KeyPress,   MODKEY,             XK_Left,         spawn,          {.v = track_prev } },
+    { KeyRelease, MODKEY,             XK_Print,        spawn,          {.v = scrot_focussed } },
+    { KeyRelease, False,              XK_Print,        spawn,          {.v = scrot } },
+    { KeyPress,   MODKEY,             XK_Delete,       spawn,          {.v = lock } },
+    { KeyPress,   MODKEY,             XK_Tab,          zoom,           {0} },
+    { KeyPress,   MODKEY,             XK_BackSpace,    killclient,     {0} },
+    { KeyPress,   MODKEY|ShiftMask,   XK_space,        togglefloating, {0} },
+    { KeyPress,   MODKEY|ShiftMask,   XK_q,            quit,           {0} },
 };
 
 static Button buttons[] = {
