@@ -59,7 +59,7 @@ static const char *hotfix[]           = { "urxvtc", "-title", "Hotfix", NULL };
 static const char *scratch[]          = { "urxvtc", "-title", "Scratch", "-geometry", "160x40", NULL };
 static const char *mutt[]             = { "urxvtc", "-title", "Mutt", "-e", "mutt", NULL };
 
-static const char *clipmenu[]         = { "clipmenu", "-i", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *passmenu[]         = { "passmenu", "-i", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 
 static const char *browser[]          = { "chromium", NULL };
 static const char *browser_private[]  = { "chromium", "--incognito", NULL };
@@ -88,6 +88,7 @@ static Key keys[] = {
   RK( KeyPress,   MODKEY,             XK_period,       focusmon        )
   RK( KeyPress,   MODKEY|ControlMask, XK_period,       tagmon          )
     { KeyPress,   MODKEY,             XK_q,            spawn,          {.v = dmenucmd } },
+    { KeyPress,   MODKEY,             XK_w,            spawn,          {.v = passmenu } },
     { KeyPress,   MODKEY,             XK_Return,       spawn,          {.v = terminal } },
     { KeyPress,   MODKEY|ControlMask, XK_Return,       spawn,          {.v = hotfix } },
     { KeyPress,   MODKEY|ShiftMask,   XK_Return,       spawn,          {.v = scratch } },
