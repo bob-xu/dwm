@@ -28,6 +28,7 @@ static const Rule rules[] = {
 	{ "ApacheDi", NULL,       NULL,       1 << 4,       False,         False,       -1 },
 	{ "Skype",    NULL,       NULL,       1 << 4,       False,         False,       -1 },
 	{ NULL,       "keepassx", NULL,       1 << 4,       False,         False,       -1 },
+	{ NULL,       "crx_nckg", NULL,       1 << 2,       False,         False,       -1 },
 };
 
 static const float mfact      = 0.55;
