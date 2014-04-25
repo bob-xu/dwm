@@ -43,6 +43,7 @@ static const Layout layouts[] = {
 };
 
 #define MODKEY Mod4Mask
+#define EXCKEY Mod1Mask
 #define TK(EVENT,KEY,TAG) \
 	{ EVENT, MODKEY,                         KEY,  view,        {.ui = 1 << TAG} }, \
 	{ EVENT, MODKEY|ShiftMask,               KEY,  toggleview,  {.ui = 1 << TAG} }, \
@@ -89,25 +90,25 @@ static Key keys[] = {
   RK( KeyPress,   MODKEY,             XK_comma,        focusstack      )
   RK( KeyPress,   MODKEY,             XK_period,       focusmon        )
   RK( KeyPress,   MODKEY|ControlMask, XK_period,       tagmon          )
-    { KeyPress,   MODKEY,             XK_q,            spawn,          {.v = dmenucmd } },
-    { KeyPress,   MODKEY,             XK_w,            spawn,          {.v = passmenu } },
-    { KeyPress,   MODKEY,             XK_Return,       spawn,          {.v = terminal } },
-    { KeyPress,   MODKEY|ControlMask, XK_Return,       spawn,          {.v = hotfix } },
-    { KeyPress,   MODKEY|ShiftMask,   XK_Return,       spawn,          {.v = scratch } },
-    { KeyPress,   MODKEY,             XK_m,            spawn,          {.v = mutt } },
-    { KeyPress,   MODKEY,             XK_backslash,    spawn,          {.v = browser } },
-    { KeyPress,   MODKEY|ControlMask, XK_backslash,    spawn,          {.v = browser_private } },
-    { KeyPress,   MODKEY,             XK_slash,        spawn,          {.v = mpdmenu_library } },
-    { KeyPress,   MODKEY|ControlMask, XK_slash,        spawn,          {.v = mpdmenu_playlist } },
-    { KeyPress,   MODKEY,             XK_Prior,        spawn,          {.v = volume_up } },
-    { KeyPress,   MODKEY,             XK_Next,         spawn,          {.v = volume_down } },
-    { KeyPress,   MODKEY,             XK_Down,         spawn,          {.v = toggle_state } },
-    { KeyPress,   MODKEY,             XK_Right,        spawn,          {.v = track_next } },
-    { KeyPress,   MODKEY,             XK_Left,         spawn,          {.v = track_prev } },
-    { KeyRelease, MODKEY,             XK_Print,        spawn,          {.v = scrot_focussed } },
+    { KeyPress,   EXCKEY,             XK_q,            spawn,          {.v = dmenucmd } },
+    { KeyPress,   EXCKEY,             XK_w,            spawn,          {.v = passmenu } },
+    { KeyPress,   EXCKEY,             XK_Return,       spawn,          {.v = terminal } },
+    { KeyPress,   EXCKEY|ControlMask, XK_Return,       spawn,          {.v = hotfix } },
+    { KeyPress,   EXCKEY|ShiftMask,   XK_Return,       spawn,          {.v = scratch } },
+    { KeyPress,   EXCKEY,             XK_m,            spawn,          {.v = mutt } },
+    { KeyPress,   EXCKEY,             XK_backslash,    spawn,          {.v = browser } },
+    { KeyPress,   EXCKEY|ControlMask, XK_backslash,    spawn,          {.v = browser_private } },
+    { KeyPress,   EXCKEY,             XK_slash,        spawn,          {.v = mpdmenu_library } },
+    { KeyPress,   EXCKEY|ControlMask, XK_slash,        spawn,          {.v = mpdmenu_playlist } },
+    { KeyPress,   EXCKEY,             XK_Prior,        spawn,          {.v = volume_up } },
+    { KeyPress,   EXCKEY,             XK_Next,         spawn,          {.v = volume_down } },
+    { KeyPress,   EXCKEY,             XK_Down,         spawn,          {.v = toggle_state } },
+    { KeyPress,   EXCKEY,             XK_Right,        spawn,          {.v = track_next } },
+    { KeyPress,   EXCKEY,             XK_Left,         spawn,          {.v = track_prev } },
+    { KeyRelease, EXCKEY,             XK_Print,        spawn,          {.v = scrot_focussed } },
     { KeyRelease, False,              XK_Print,        spawn,          {.v = scrot } },
-    { KeyPress,   MODKEY,             XK_Delete,       spawn,          {.v = lock } },
-    { KeyRelease, MODKEY,             XK_Delete,       spawn,          {.v = blank } },
+    { KeyPress,   EXCKEY,             XK_Delete,       spawn,          {.v = lock } },
+    { KeyRelease, EXCKEY,             XK_Delete,       spawn,          {.v = blank } },
     { KeyPress,   MODKEY,             XK_Tab,          zoom,           {0} },
     { KeyPress,   MODKEY,             XK_BackSpace,    killclient,     {0} },
     { KeyPress,   MODKEY|ShiftMask,   XK_space,        togglefloating, {0} },
