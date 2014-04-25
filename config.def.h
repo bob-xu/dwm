@@ -66,8 +66,7 @@ static const char *passmenu[]         = { "passmenu", "-i", "-fn", font, "-nb", 
 static const char *browser[]          = { "chromium", NULL };
 static const char *browser_private[]  = { "chromium", "--incognito", NULL };
 
-static const char *lock[]             = { "slock", NULL };
-static const char *blank[]            = { "sh", "-c", "sleep 1 && xset dpms force off", NULL };
+static const char *lock[]             = { "vlock-original", "-ans", NULL };
 
 static const char *mpdmenu_library[]  = { "mpdmenu", "-l", "::", "-i", "-l", "3", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
 static const char *mpdmenu_playlist[] = { "mpdmenu", "-p", "::", "-i", "-l", "3", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
@@ -108,7 +107,6 @@ static Key keys[] = {
     { KeyRelease, EXCKEY,             XK_Print,        spawn,          {.v = scrot_focussed } },
     { KeyRelease, False,              XK_Print,        spawn,          {.v = scrot } },
     { KeyPress,   EXCKEY,             XK_Delete,       spawn,          {.v = lock } },
-    { KeyRelease, EXCKEY,             XK_Delete,       spawn,          {.v = blank } },
     { KeyPress,   MODKEY,             XK_Tab,          zoom,           {0} },
     { KeyPress,   MODKEY,             XK_BackSpace,    killclient,     {0} },
     { KeyPress,   MODKEY|ShiftMask,   XK_space,        togglefloating, {0} },
